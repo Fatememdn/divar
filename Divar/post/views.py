@@ -1,20 +1,19 @@
-from django.shortcuts import render
-from .serializer import PostSerializers, UserSerializers
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from .models import Post, User
+from rest_framework.generics import CreateAPIView,RetrieveAPIView, DestroyAPIView, ListAPIView
+from .models import Post
+from .serializers import PostSerializers   
 
-class postserilizerlistcreate(ListCreateAPIView):
+class PostCreateView(CreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializers
 
-class postserilizerRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+class PostListView(ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializers
 
-class UserSerializerListCreate(ListCreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializers
+class PostDetailView(RetrieveAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializers
 
-class UserSerializerRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializers
+class PostDeleteView(DestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializers

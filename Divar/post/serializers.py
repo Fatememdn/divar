@@ -6,6 +6,3 @@ class PostSerializers(ModelSerializer):
     model = Post
     fields = "__al__"
 
-class UserSerializers(ModelSerializer):
-    model = Post
-    fields = "__al__"

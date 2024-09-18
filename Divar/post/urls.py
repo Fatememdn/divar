@@ -1,14 +1,9 @@
 from django.urls import path
-from .views import (
-    PostSerializerListCreate,
-    postserilizerRetrieveUpdateDestroyAPIView,
-    UserSerializerListCreate,
-    UserSerializerRetrieveUpdateDestroyAPIView
-)
+from .views import PostCreateView, PostListView, PostDetailView, PostDeleteView
 
 urlpatterns = [
-    path('posts/', PostSerializerListCreate.as_view(), name='post-list-create'),
-    path('posts/<int:pk>/', postserilizerRetrieveUpdateDestroyAPIView.as_view(), name='post-detail'),
-    path('users/', UserSerializerListCreate.as_view(), name='user-list-create'),
-    path('users/<int:pk>/', UserSerializerRetrieveUpdateDestroyAPIView.as_view(), name='user-detail'),
+    path('create/', PostCreateView.as_view()),
+    path('list/', PostListView.as_view()),
+    path('detail/<int:pk>/', PostDetailView.as_view()),
+    path('delete/<int:pk>/', PostDeleteView.as_view()),
 ]
